@@ -85,26 +85,7 @@
         <!-- /.container -->
     </section>
 
-<script type="text/javascript" src="http://js.maxmind.com/js/apis/geoip2/v2.1/geoip2.js"></script>
- 
-<script type="text/javascript">
- 
-var onSuccess = function(location){
-  document.getElementById("location").innerHTML = 
-  //JSON.stringify(location, undefined, 4);
-  location["city"]["names"]["en"] + ", " + location["subdivisions"][0]["names"]["en"]+"\n"+;
-};
- 
-var onError = function(error){
-    document.getElementById("location").innerHTML = "Unable to get location";
-    console.log("Error retrieving location");
-};
- 
-geoip2.city(onSuccess, onError);
- 
-</script>
- 
-<script src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+
  
     <!-- Services -->
     <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
@@ -176,7 +157,21 @@ geoip2.city(onSuccess, onError);
         </div>
         <!-- /.container -->
     </section>
+<script>
+var x = document.getElementById("location");
 
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+}
+</script>    
+    
     <!-- Callout -->
     <aside class="callout">
         <div class="text-vertical-center">
