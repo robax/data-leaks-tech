@@ -90,9 +90,9 @@
 <script type="text/javascript">
  
 var onSuccess = function(location){
-  document.getElementById("location").innerHTML =
-      "Lookup successful:\n\n"
-      + JSON.stringify(location, undefined, 4);
+  document.getElementById("location").innerHTML = 
+  //JSON.stringify(location, undefined, 4);
+  location["city"]["names"]["en"] + ", " + location["subdivisions"][0]["names"]["en"];
 };
  
 var onError = function(error){
@@ -100,13 +100,6 @@ var onError = function(error){
 };
  
 geoip2.city(onSuccess, onError);
-
-$(document).ready(function () {
-    $.getJSON("http://jsonip.com/?callback=?", function (data) {
-        console.log(data);
-        alert(data.ip);
-    });
-});
  
 </script>
  
@@ -130,7 +123,7 @@ $(document).ready(function () {
                                 <h4>
                                     <strong>IP</strong>
                                 </h4>
-                                <p><script type="text/javascript"> var userip; </script> <script type="text/javascript" src="http://l2.io/ip.js?var=userip"></script>; <script type="text/javascript"> //Prints text including IP address document.write("Your IP address is :", userip); </script></p>
+                                <p><?php echo htmlspecialchars($_SERVER['REMOTE_ADDR']); ?></p>
                                 <!--<a href="#" class="btn btn-light">Learn More</a>-->
                             </div>
                         </div>
@@ -143,7 +136,7 @@ $(document).ready(function () {
                                 <h4>
                                     <strong>Geolocation</strong>
                                 </h4>
-                                <p id="location">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <p id="location"></p>
                                 <!--<a href="#" class="btn btn-light">Learn More</a>-->
                             </div>
                         </div>
