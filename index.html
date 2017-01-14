@@ -92,11 +92,12 @@
 var onSuccess = function(location){
   document.getElementById("location").innerHTML = 
   //JSON.stringify(location, undefined, 4);
-  location["city"]["names"]["en"] + ", " + location["subdivisions"][0]["names"]["en"];
+  location["city"]["names"]["en"] + ", " + location["subdivisions"][0]["names"]["en"]+"\n"+;
 };
  
 var onError = function(error){
-    document.write("Error retrieving location");
+    document.getElementById("location").innerHTML = "Unable to get location";
+    console.log("Error retrieving location");
 };
  
 geoip2.city(onSuccess, onError);
