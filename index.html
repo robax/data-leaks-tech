@@ -158,19 +158,33 @@
         <!-- /.container -->
     </section>
 <script>
-var x = document.getElementById("location");
+    //document.getElementById("map").src = "http:://maps.google.com/maps?center=" + position.coords.latitude + "," + position.coords.longitude + "&amp;ie=UTF8&amp;hq=&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed";
 
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }
-
-function showPosition(position) {
-    x.innerHTML = "Latitude: " + position.coords.latitude + 
-    "<br>Longitude: " + position.coords.longitude;
-}
 </script>    
+    
+
+    <!-- Map -->
+    
+    <!--<section id="contact" class="map">
+    <div id="mapholder"></div>
+        <div id="map" width="100%" height="00px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src=""></div>
+    </section>-->
+    
+    <div id="map" style="width:100%;height:500px"></div>
+
+<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+
+<script>
+function myMap() {
+  var mapCanvas = document.getElementById("map");
+  var mapOptions = {
+    center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+  }
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+}
+</script>
+
+
     
     <!-- Callout -->
     <aside class="callout">
@@ -238,15 +252,6 @@ function showPosition(position) {
             </div>
         </div>
     </aside>
-
-    <!-- Map -->
-    <section id="contact" class="map">
-        <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
-        <br />
-        <small>
-            <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
-        </small>
-    </section>
 
     <!-- Footer -->
     <footer>
